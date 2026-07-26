@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Phone, MessageSquare, Mail, ChevronDown } from 'lucide-react'
+import { VayuCareLogo } from '../components/ui/VayuCareLogo'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -25,7 +26,7 @@ export function Footer() {
     setSubmitting(true)
     try {
       await new Promise((res) => setTimeout(res, 600))
-      toast.success('Thank you! You have subscribed to Climate Clarity updates.')
+      toast.success('Thank you! You have subscribed to VayuCare updates.')
       setNewsletterEmail('')
     } finally {
       setSubmitting(false)
@@ -90,17 +91,7 @@ export function Footer() {
             
             {/* Logo Row */}
             <Link to="/" className="flex items-center gap-3 text-left group w-fit">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-500/20 shrink-0">
-                <span className="text-lg font-extrabold tracking-tight">CC</span>
-              </div>
-              <div className="flex flex-col whitespace-nowrap min-w-0">
-                <span className="text-xl font-bold tracking-tight text-white font-display truncate">
-                  Climate Clarity
-                </span>
-                <span className="text-xs text-blue-400 font-medium truncate">
-                  AC Service & Smart Cooling Solutions
-                </span>
-              </div>
+              <VayuCareLogo size="lg" mode="dark" />
             </Link>
 
             {/* Short Description */}
@@ -270,7 +261,7 @@ export function Footer() {
 
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {currentYear} Climate Clarity. All rights reserved.</p>
+          <p>© {currentYear} VayuCare Technologies Inc. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
             <Link to="/terms" className="hover:text-slate-400 transition-colors">Terms of Service</Link>

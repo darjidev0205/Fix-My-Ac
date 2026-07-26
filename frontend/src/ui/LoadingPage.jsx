@@ -1,47 +1,35 @@
-import { motion } from 'framer-motion'
+import { VayuCareLogo } from '../components/ui/VayuCareLogo'
 
-export function LoadingPage({ label = 'Loading FixMyAC…' }) {
+export function LoadingPage({ label = 'Loading VayuCare…' }) {
   return (
-    <div className="grid min-h-dvh place-items-center bg-[var(--color-fix-bg)] px-6">
-      <div className="w-full max-w-md">
-        <div className="flex items-center gap-3">
-          <div className="grid size-11 place-items-center rounded-2xl bg-sky-500 text-white shadow-[var(--shadow-fix-soft)]">
-            <span className="text-sm font-bold">FA</span>
-          </div>
-          <div>
-            <div className="text-base font-semibold text-[var(--color-fix-ink)]">
-              FixMyAC
-            </div>
-            <div className="text-xs text-[var(--color-fix-muted)]">
-              Pricing & Booking Platform
-            </div>
+    <div className="grid min-h-dvh place-items-center bg-[#F8FAFC] px-6">
+      <div className="w-full max-w-md text-center">
+        {/* Animated VayuCare Icon Spinner */}
+        <div className="relative mx-auto mb-6 h-16 w-16 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full bg-sky-400/20 animate-ping" />
+          <div className="relative z-10">
+            <VayuCareLogo variant="icon" size="lg" />
           </div>
         </div>
 
-        <div className="mt-8 rounded-3xl border border-[var(--color-fix-border)] bg-white p-6 shadow-[var(--shadow-fix-soft)]">
-          <div className="flex items-center justify-between">
-            <div className="text-sm font-semibold text-[var(--color-fix-ink)]">
-              {label}
-            </div>
-            <Spinner />
+        <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <VayuCareLogo size="sm" />
+            <div className="size-4 animate-spin rounded-full border-2 border-sky-200 border-t-sky-600" />
           </div>
 
-          <div className="mt-5 space-y-3">
-            <SkeletonRow />
-            <SkeletonRow />
-            <SkeletonRow />
+          <div className="text-xs font-semibold text-slate-600">
+            {label}
           </div>
 
-          <motion.div
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-            className="mt-6 h-1.5 rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-sky-200"
-          />
+          {/* Airwave Pulse Line */}
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+            <div className="h-full w-full bg-gradient-to-r from-slate-900 via-sky-400 to-emerald-400 animate-pulse" />
+          </div>
         </div>
 
-        <div className="mt-4 text-center text-xs text-[var(--color-fix-muted)]">
-          Please wait a moment…
+        <div className="mt-4 text-xs text-slate-400 font-medium">
+          Securing your climate experience…
         </div>
       </div>
     </div>

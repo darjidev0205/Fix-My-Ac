@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fafbff;
+  --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-dim: #f1f5f9;
   --color-surface-bright: #ffffff;
-  --color-surface-container: rgba(255, 255, 255, 0.88);
+  --color-surface-container: rgba(255, 255, 255, 0.92);
   --color-surface-container-low: #f8fafc;
   --color-surface-container-high: #e2e8f0;
   --color-surface-variant: #f1f5f9;
@@ -13,19 +13,19 @@
   --color-on-surface-variant: #475569;
   --color-outline: #e2e8f0;
   --color-outline-variant: #cbd5e1;
-  --color-primary: #3563f6;
-  --color-primary-strong: #1d4ed8;
+  --color-primary: #0f172a;
+  --color-primary-strong: #020617;
   --color-on-primary: #ffffff;
   --color-primary-container: #eff6ff;
-  --color-secondary: #0ea5e9;
+  --color-secondary: #38bdf8;
   --color-on-secondary: #ffffff;
-  --color-accent: #38bdf8;
+  --color-accent: #10b981;
   --color-error: #ef4444;
   --color-on-error: #ffffff;
   --color-success: #10b981;
   --shadow-soft: 0 20px 50px -10px rgba(15, 23, 42, 0.06);
-  --shadow-card: 0 25px 70px -15px rgba(53, 99, 246, 0.12);
-  --shadow-glow: 0 0 50px rgba(53, 99, 246, 0.25);
+  --shadow-card: 0 25px 70px -15px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 0 50px rgba(56, 189, 248, 0.22);
   --radius-sm: 0.75rem;
   --radius-md: 1.25rem;
   --radius-lg: 1.75rem;

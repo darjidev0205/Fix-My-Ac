@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useAuth } from '../context/AuthContext'
+import { VayuCareLogo } from '../components/ui/VayuCareLogo'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -70,23 +71,13 @@ export function Navbar() {
     <header className="sticky top-0 z-50 h-20 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl transition-all">
       <div className="site-container flex h-full items-center justify-between gap-4">
         
-        {/* Left: Brand Logo Group (Fixed Minimum Width, Never Shrinks) */}
+        {/* Left: VayuCare Brand Logo Group */}
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="flex items-center gap-3 text-left shrink-0 min-w-0 focus:outline-none focus:ring-2 focus:ring-blue-500/20 rounded-2xl p-1 -ml-1 transition-opacity hover:opacity-95"
+          className="flex items-center text-left shrink-0 focus:outline-none rounded-2xl p-1 -ml-1 transition-opacity hover:opacity-95"
         >
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#3563F6] text-white shadow-md shadow-blue-500/20">
-            <span className="text-base font-extrabold tracking-tight">CC</span>
-          </div>
-          <div className="flex flex-col justify-center whitespace-nowrap min-w-0">
-            <div className="text-base font-bold tracking-tight text-slate-900 leading-tight truncate">
-              Climate Clarity
-            </div>
-            <div className="text-[11px] font-medium text-slate-500 leading-none mt-0.5 truncate">
-              AC Installation & Repair
-            </div>
-          </div>
+          <VayuCareLogo size="md" />
         </button>
 
         {/* Center: Desktop Navigation Links (Equal Spacing, Responsive Shrink) */}

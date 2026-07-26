@@ -10,18 +10,18 @@ export function HeroSection({ onGetPrice }) {
       className="relative overflow-clip pt-8 pb-12 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-28"
       style={{
         background: `
-          radial-gradient(circle at 15% 15%, rgba(53, 99, 246, 0.08) 0%, transparent 45%),
-          radial-gradient(circle at 85% 20%, rgba(14, 165, 233, 0.06) 0%, transparent 40%),
-          linear-gradient(180deg, #ffffff 0%, #f8fbff 100%)
+          radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+          radial-gradient(circle at 80% 25%, rgba(16, 185, 129, 0.08) 0%, transparent 35%),
+          linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)
         `,
       }}
     >
-      {/* Extremely subtle Linear-style grid texture */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      {/* Airflow subtle grid texture */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
 
-      {/* Ambient blur glows contained inside overflow-clip section */}
-      <div className="pointer-events-none absolute top-10 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500/10 rounded-full blur-[100px] sm:blur-[120px] -z-10" />
-      <div className="pointer-events-none absolute top-20 right-10 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-sky-400/10 rounded-full blur-[100px] sm:blur-[140px] -z-10 animate-pulse-glow" />
+      {/* VayuCare Ambient Air Glows */}
+      <div className="pointer-events-none absolute top-10 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-sky-400/10 rounded-full blur-[100px] sm:blur-[120px] -z-10" />
+      <div className="pointer-events-none absolute top-20 right-10 w-72 sm:w-[500px] h-72 sm:h-[500px] bg-emerald-400/10 rounded-full blur-[100px] sm:blur-[140px] -z-10 animate-pulse-glow" />
 
       <div className="site-container">
         <div className="grid gap-8 lg:gap-12 grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)] items-center">

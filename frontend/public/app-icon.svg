@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Outer Rounded Square Container -->
+  <rect width="512" height="512" rx="128" fill="#0F172A"/>
+  
+  <!-- Subtle Ambient Glow -->
+  <circle cx="256" cy="256" r="180" fill="#38BDF8" opacity="0.08"/>
+
+  <!-- VayuCare Abstract "V" + Air Circulation Geometry -->
+  <g transform="translate(256, 256) scale(1.15)">
+    <!-- Primary Air Arc - Outer Cyan Wing -->
+    <path d="M-110,-70 C-60,50 -20,105 0,105 C20,105 60,50 110,-70 C70,-20 35,45 0,45 C-35,45 -70,-20 -110,-70 Z" fill="url(#vayucare-cyan-grad)"/>
+    
+    <!-- Secondary Precision Flow - Inner Emerald Accent -->
+    <path d="M-65,-85 C-35,-15 -12,25 0,25 C12,25 35,-15 65,-85 C42,-45 22,-5 0,-5 C-22,-5 -42,-45 -65,-85 Z" fill="#10B981" opacity="0.95"/>
+    
+    <!-- Core Circulation Loop (Continuous Airflow Node) -->
+    <circle cx="0" cy="-60" r="16" fill="#38BDF8"/>
+  </g>
+
+  <!-- High-Precision Gradients -->
+  <defs>
+    <linearGradient id="vayucare-cyan-grad" x1="-110" y1="-70" x2="110" y2="105" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+</svg>
