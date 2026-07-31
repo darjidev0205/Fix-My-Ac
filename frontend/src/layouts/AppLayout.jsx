@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 import { Navbar } from '../ui/Navbar'
 import { Footer } from '../ui/Footer'
+import { InstallAppPopup } from '../components/InstallAppPopup'
 
 export function AppLayout() {
   return (
@@ -10,8 +11,10 @@ export function AppLayout() {
         <Outlet />
       </main>
       <Footer />
+      <InstallAppPopup />
       <ScrollRestoration />
     </div>
   )
 }
+
 

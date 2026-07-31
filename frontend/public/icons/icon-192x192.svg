@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="42" fill="#0F172A"/>
+  <g transform="translate(29, 29) scale(2.09375)">
+    <!-- Airflow V Symbol -->
+    <path d="M12 14C20 34 27 48 32 48C37 48 44 34 52 14C42 24 37 36 32 36C27 36 22 24 12 14Z" fill="#38BDF8"/>
+    <path d="M20 12C26 26 29 34 32 34C35 34 38 26 44 12C38 18 35 24 32 24C29 24 26 18 20 12Z" fill="#10B981" opacity="0.9"/>
+    <circle cx="32" cy="18" r="4.5" fill="#FFFFFF"/>
+  </g>
+</svg>

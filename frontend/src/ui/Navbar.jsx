@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { Download, Smartphone } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { VayuCareLogo } from '../components/ui/VayuCareLogo'
+import { useInstallApp } from '../hooks/useInstallApp'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -18,11 +20,11 @@ export function Navbar() {
   const location = useLocation()
   const { user, logout } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { triggerInstall, deferredPrompt, isAndroid, apkUrl, isCapacitor, isInstalled } = useInstallApp()
 
   const dashboardPath = user?.role === 'technician' ? '/technician' : '/dashboard'
   const displayName = user?.displayName || user?.email?.split('@')[0] || user?.email || user?.phoneNumber || 'User'
 
-  // Extract initials for the avatar circle (e.g. "Darji Dev" -> "DD")
   const initials = displayName
     .split(' ')
     .filter(Boolean)
@@ -31,12 +33,10 @@ export function Navbar() {
     .slice(0, 2)
     .toUpperCase() || 'U'
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [location.pathname])
 
-  // Prevent background scrolling when mobile menu is open & handle Escape key
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -67,6 +67,17 @@ export function Navbar() {
     }
   }
 
+  async function handleHeaderInstall() {
+    if (deferredPrompt) {
+      await triggerInstall()
+    } else if (isAndroid) {
+      toast.success('Downloading VayuCare APK...', { icon: '📲' })
+      window.open(apkUrl, '_blank')
+    } else {
+      toast.success('App is already installed or supported via browser menu!', { icon: '✨' })
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 h-20 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl transition-all">
       <div className="site-container flex h-full items-center justify-between gap-4">
@@ -80,7 +91,7 @@ export function Navbar() {
           <VayuCareLogo size="md" />
         </button>
 
-        {/* Center: Desktop Navigation Links (Equal Spacing, Responsive Shrink) */}
+        {/* Center: Desktop Navigation Links */}
         <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-1 xl:gap-2 min-w-0 shrink">
           {navLinks.map((link) => (
             <NavLink
@@ -114,11 +125,25 @@ export function Navbar() {
           )}
         </nav>
 
-        {/* Right: User Identity, Logout & Primary CTA Group */}
+        {/* Right: User Identity, Install App, Logout & Primary CTA Group */}
         <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0">
+
+          {/* Permanent Install App Header Button (When not in Capacitor & not installed) */}
+          {!isCapacitor && !isInstalled && (
+            <button
+              type="button"
+              onClick={handleHeaderInstall}
+              className="hidden md:inline-flex items-center justify-center gap-1.5 h-11 px-3.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition-colors whitespace-nowrap shrink-0"
+              title="Install VayuCare App"
+            >
+              <Smartphone className="w-4 h-4 text-[#3563F6]" />
+              <span>Install App</span>
+            </button>
+          )}
+
           {user ? (
             <>
-              {/* Compact User Identity Pill (Single Line Name, Avatar Initials) */}
+              {/* Compact User Identity Pill */}
               <button
                 type="button"
                 onClick={() => navigate(dashboardPath)}
@@ -158,7 +183,7 @@ export function Navbar() {
             </button>
           )}
 
-          {/* Primary CTA: Book Now Button (Never Wraps) */}
+          {/* Primary CTA: Book Now Button */}
           <button
             type="button"
             onClick={() => navigate('/booking')}
@@ -187,11 +212,10 @@ export function Navbar() {
 
       </div>
 
-      {/* Mobile Drawer Navigation (Below 1024px) */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="fixed inset-x-0 top-20 bottom-0 z-40 bg-slate-900/40 backdrop-blur-md lg:hidden">
           <div className="border-b border-slate-200 bg-white px-4 py-6 shadow-2xl space-y-4 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            {/* User Details Box if Logged In */}
             {user && (
               <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100">
                 <div className="h-10 w-10 rounded-full bg-[#3563F6] text-white font-bold text-sm flex items-center justify-center shrink-0">
@@ -208,7 +232,6 @@ export function Navbar() {
               </div>
             )}
 
-            {/* Navigation Links */}
             <div className="space-y-1">
               {navLinks.map((link) => (
                 <NavLink
@@ -242,7 +265,20 @@ export function Navbar() {
               )}
             </div>
 
-            {/* Action Buttons */}
+            {/* Permanent Install App item in Mobile Drawer */}
+            {!isCapacitor && !isInstalled && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleHeaderInstall}
+                  className="w-full flex items-center justify-center gap-2 h-12 rounded-xl border border-sky-200 bg-sky-50 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors"
+                >
+                  <Smartphone className="w-4 h-4 text-sky-600" />
+                  Install VayuCare Mobile App
+                </button>
+              </div>
+            )}
+
             <div className="pt-4 border-t border-slate-100 space-y-2">
               {user ? (
                 <button
@@ -268,3 +304,4 @@ export function Navbar() {
     </header>
   )
 }
+
